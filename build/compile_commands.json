@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/practica/TPU_novel/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -g -o CMakeFiles\\TPU_novel.dir\\main.cpp.obj -c C:\\practica\\TPU_novel\\main.cpp",
+  "file": "C:\\practica\\TPU_novel\\main.cpp",
+  "output": "CMakeFiles\\TPU_novel.dir\\main.cpp.obj"
+}
+]
