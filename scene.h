@@ -2,19 +2,20 @@
 #define SCENE_H
 #include <string>
 
+
 class Scene
 {
 public:
     std::string text;
-    int background;
-    int character;
-    int emote;
+    std::string background;
+    std::string character;
+    std::string emote;
     Scene(std::string str);
-    ~Scene();
-};
 
-Scene::Scene(std::string str){
-    
-}
+    std::string getText();
+    std::string getBackground();
+    std::string getCharacter();
+    std::string getEmote();
+};
 
 #endif 

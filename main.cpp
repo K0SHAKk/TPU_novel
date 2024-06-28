@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <windows.h>
+#include "scene.h"
 
 //функция проверяющая нажатие клавишь на клавиатуре
 BOOL IsKeyPress() {
@@ -36,12 +37,12 @@ int main(int, char**){
         while (!file.eof()){
             str = "";
             std::getline(file, str);
-            std::cout << str << std::endl;
+            Scene scn(str);
+            std::cout << scn.getText() << " " << scn.getBackground() << " " << scn.getCharacter() << " " << scn.getEmote() << std::endl;
 
             //пустой цикл не дающий продолдиться выполнению программы файла пока не будет нажата кнопка 
             while(IsKeyPress()){
             };
-            std::cout << std::endl;
         }
     }
     return 0;
