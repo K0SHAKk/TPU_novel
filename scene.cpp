@@ -22,6 +22,9 @@ Scene::Scene(std::string str){
     //Отладка-end
     arr.push_back( str.substr( prev ) );
     text = arr[0];
+    background = arr[1];
+    character = arr[2];
+    emote = arr[3];
 
 }
 
