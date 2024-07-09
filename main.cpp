@@ -18,16 +18,9 @@ BOOL IsKeyPress() {
     return true;
 }
 
-int main(int, char**){
-    setlocale(LC_ALL, "ru");
-    
-    //время через которое будет выводиться следующий смвол
-    unsigned short int timeSleep = 3;
-
-    //переменная хранящая путь до файла с текстом
-    std::string path = "C:/practica/TPU_novel/scene.txt";
-
+void newGame(std::string path, unsigned short int timeSleep){
     std::ifstream file;
+
     file.open(path);
 
     //если файл не открывается, выыодит в консоль сообщение об ошибке открытия файла
@@ -80,6 +73,49 @@ int main(int, char**){
             while(IsKeyPress()){
             };
         }
+    }
+}
+
+void mainMenu(std::string path, unsigned short int timeSleep){
+    unsigned short int choise;
+    std::cout << "Главное меню:" << std::endl;
+    std::cout << "1. Новая игра" << std::endl;
+    std::cout << "2. Загрузить игру" << std::endl;
+    std::cout << "3. Настройки" << std::endl;
+    std::cout << "4. Выход" << std::endl;
+    std::cin >> choise;
+
+    switch (choise)
+    {
+    case 1:
+        newGame(path, timeSleep);
+        break;
+    
+    case 2:
+        std::cout << "В разработке" << std::endl;
+        break;
+
+    case 3:
+        std::cout << "В разработке" << std::endl;
+        break;
+
+    case 4:
+        return abort();
+
+    default:
+        break;
+    }
+}
+
+int main(int, char**){
+    setlocale(LC_ALL, "ru");
+    //время через которое будет выводиться следующий смвол
+    unsigned short int timeSleep = 2;
+    //переменная хранящая путь до файла с текстом
+    std::string path = "C:/practica/TPU_novel/scene.txt";
+    
+    while (true){
+        mainMenu(path, timeSleep);
     }
     return 0;
 }
