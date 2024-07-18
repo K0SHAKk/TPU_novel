@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(TPU_novel VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(TPU_novel main.cpp scene.h scene.cpp)
+add_executable(TPU_novel main.cpp scene.h scene.cpp game.h game.cpp)
 
 include(CTest)
 enable_testing()

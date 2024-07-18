@@ -11,6 +11,7 @@ public:
     std::string character;
     std::string emote;
     Scene(std::string str);
+    ~Scene();
 
     std::string getText();
     std::string getBackground();

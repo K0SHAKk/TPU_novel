@@ -28,6 +28,9 @@ Scene::Scene(std::string str){
 
 }
 
+Scene::~Scene(){
+};
+
 std::string Scene::getText(){
     return text;
 }
