@@ -3,9 +3,30 @@
 #include <fstream>
 #include <windows.h>
 #include <conio.h>
+#include <stdlib.h>
 #include "scene.h"
 #include "game.h"
+#include "save.h"
 
+std::string path = "C:/practica/TPU_novel/save.txt";
+Save save(path);
+
+void clear() {
+    COORD topLeft  = { 0, 0 };
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO screen;
+    DWORD written;
+
+    GetConsoleScreenBufferInfo(console, &screen);
+    FillConsoleOutputCharacterA(
+        console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+    );
+    FillConsoleOutputAttribute(
+        console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
+        screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+    );
+    SetConsoleCursorPosition(console, topLeft);
+}
 //функция проверяющая нажатие клавишь на клавиатуре
 BOOL IsESCKeyPress() {
     if (_kbhit()) { // Проверяем, была ли нажата клавиша
@@ -26,20 +47,6 @@ BOOL IsDialogueKeyPress() {
     return TRUE;
 }
 
-int saveGame(){
-    std::cout << "в разработке" << std::endl;
-    while(IsESCKeyPress()){
-    }
-    return 0;
-}
-
-int loadGame(){
-    std::cout << "в разработке" << std::endl;
-    while(IsESCKeyPress()){
-    }
-    return 0;
-}
-
 int gameSeting(){
     std::cout << "в разработке" << std::endl;
     while(IsESCKeyPress()){
@@ -47,7 +54,69 @@ int gameSeting(){
     return 0;
 }
 
-int gameMenu(){
+// int continueGame(std::string path, unsigned short int timeSleep, int saveLine){
+//     std::ifstream file;
+
+//     file.open(path);
+
+//     //если файл не открывается, выыодит в консоль сообщение об ошибке открытия файла
+//     if (!file.is_open()){
+//         std::cout << "Ошибка открытия файла";
+//     }
+//     else{
+//         unsigned short int line = 0;
+//         std::string str;
+//         std::string txt;
+
+//         while (!file.eof()){
+//             unsigned short int curentLine = 0;
+//             if (curentLine >= saveLine){
+//                 str = "";
+//                 std::getline(file, str);
+//                 Scene scn(str);
+//                 txt = scn.getText();
+                
+//                 for (short unsigned int i=0; i < txt.size(); i++){
+                    
+//                     //если кнопка нажата выводиться сразу весь текст
+//                     if (!IsDialogueKeyPress()){
+//                         timeSleep = 0;
+//                     }
+//                     // if (!IsESCKeyPress()){
+//                     //     return 0;
+//                     // }
+
+//                     std::cout << txt[i];
+                    
+//                     Sleep(timeSleep);
+//                 }
+//                 std::cout << std::endl;
+//                 timeSleep = 2;
+//                 line++;
+
+//                 // *Строка проверки*
+//                 // std::cout << scn.getText() << " " << scn.getBackground() << " " << scn.getCharacter() << " " << scn.getEmote()  << std::endl;
+
+//                 //пустой цикл не дающий продолжиться выполнению программы файла пока не будет нажата кнопка 
+//                 while(IsDialogueKeyPress()){
+//                     if (!IsESCKeyPress()){
+//                         clear();
+//                         if(gameMenu(line, txt) == 5){
+//                             clear();
+//                             return 0;
+//                         };
+//                     }
+//                 };
+//             }
+//             curentLine ++;
+//         }
+//     }
+//     clear();
+//     return 0;
+// }
+
+int gameMenu(unsigned short int line, std::string str){
+    clear();
     unsigned short int choise;
     std::cout << "1.Продолжить" << std::endl;
     std::cout << "2.Сохранить" << std::endl;
@@ -55,17 +124,18 @@ int gameMenu(){
     std::cout << "4.Настройки" << std::endl;
     std::cout << "5.Главное меню" << std::endl;
     std::cin >> choise;
+    clear();
     switch (choise)
     {
     case 1:
         return 0;
     
     case 2:
-        saveGame();
+        save.saveGame(line, str);
         return 0;
 
     case 3:
-        loadGame();
+        save.loadGame();
         return 0;
 
     case 4:
@@ -90,26 +160,17 @@ int newGame(std::string path, unsigned short int timeSleep){
         std::cout << "Ошибка открытия файла";
     }
     else{
+        unsigned short int line = 0;
         std::string str;
         std::string txt;
 
-        //на потом
-        // unsigned short int limit;
-
-        while(IsESCKeyPress()){
         while (!file.eof()){
             str = "";
             std::getline(file, str);
             Scene scn(str);
             txt = scn.getText();
-
-            //на потом
-            // limit = 0;
-            // *Строка проверки*
-            // std::cout << txt.size() << std::endl;
             
             for (short unsigned int i=0; i < txt.size(); i++){
-                // limit++;
                 
                 //если кнопка нажата выводиться сразу весь текст
                 if (!IsDialogueKeyPress()){
@@ -120,17 +181,12 @@ int newGame(std::string path, unsigned short int timeSleep){
                 // }
 
                 std::cout << txt[i];
-
-                //на потом
-                // if (limit == 50){
-                //     std::cout << std::endl;
-                //     limit = 0;
-                // }
                 
                 Sleep(timeSleep);
             }
             std::cout << std::endl;
             timeSleep = 2;
+            line++;
 
             // *Строка проверки*
             // std::cout << scn.getText() << " " << scn.getBackground() << " " << scn.getCharacter() << " " << scn.getEmote()  << std::endl;
@@ -138,14 +194,16 @@ int newGame(std::string path, unsigned short int timeSleep){
             //пустой цикл не дающий продолжиться выполнению программы файла пока не будет нажата кнопка 
             while(IsDialogueKeyPress()){
                 if (!IsESCKeyPress()){
-                    if(gameMenu() == 5){
+                    clear();
+                    if(gameMenu(line, txt) == 5){
+                        clear();
                         return 0;
                     };
                 }
             };
         }
-        }
     }
+    clear();
     return 0;
 }
 
@@ -157,7 +215,7 @@ void mainMenu(std::string path, unsigned short int timeSleep){
     std::cout << "3. Настройки" << std::endl;
     std::cout << "4. Выход" << std::endl;
     std::cin >> choise;
-
+    clear();
     switch (choise)
     {
     case 1:
@@ -165,7 +223,7 @@ void mainMenu(std::string path, unsigned short int timeSleep){
         break;
     
     case 2:
-        loadGame();
+        save.loadGame();
         break;
 
     case 3:
@@ -174,6 +232,7 @@ void mainMenu(std::string path, unsigned short int timeSleep){
 
     case 4:
         std::cout << "До скорых встреч";
+        save.~Save();
         return abort();
 
     default:
