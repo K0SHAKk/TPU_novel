@@ -73,6 +73,12 @@ build CMakeFiles/TPU_novel.dir/save.cpp.obj: CXX_COMPILER__TPU_novel_unscanned_D
   OBJECT_DIR = CMakeFiles\TPU_novel.dir
   OBJECT_FILE_DIR = CMakeFiles\TPU_novel.dir
 
+build CMakeFiles/TPU_novel.dir/tools.cpp.obj: CXX_COMPILER__TPU_novel_unscanned_Debug C$:/practica/TPU_novel/tools.cpp || cmake_object_order_depends_target_TPU_novel
+  DEP_FILE = CMakeFiles\TPU_novel.dir\tools.cpp.obj.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles\TPU_novel.dir
+  OBJECT_FILE_DIR = CMakeFiles\TPU_novel.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TPU_novel
@@ -81,7 +87,7 @@ build CMakeFiles/TPU_novel.dir/save.cpp.obj: CXX_COMPILER__TPU_novel_unscanned_D
 #############################################
 # Link the executable TPU_novel.exe
 
-build TPU_novel.exe: CXX_EXECUTABLE_LINKER__TPU_novel_Debug CMakeFiles/TPU_novel.dir/main.cpp.obj CMakeFiles/TPU_novel.dir/scene.cpp.obj CMakeFiles/TPU_novel.dir/game.cpp.obj CMakeFiles/TPU_novel.dir/save.cpp.obj
+build TPU_novel.exe: CXX_EXECUTABLE_LINKER__TPU_novel_Debug CMakeFiles/TPU_novel.dir/main.cpp.obj CMakeFiles/TPU_novel.dir/scene.cpp.obj CMakeFiles/TPU_novel.dir/game.cpp.obj CMakeFiles/TPU_novel.dir/save.cpp.obj CMakeFiles/TPU_novel.dir/tools.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TPU_novel.dir

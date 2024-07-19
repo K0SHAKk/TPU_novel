@@ -2,7 +2,16 @@
 #define GAME_H
 #include <string>
 
-void mainMenu(std::string path, unsigned short int timeSleep);
-int newGame(std::string path, unsigned short int timeSleep);
+class Game
+{
+public:
+    std::string pathScene = "C:/practica/TPU_novel/scene.txt";
+    unsigned short int timeSleep = 2;
+    Game();
+    ~Game();
+    int mainMenu();
+    int gameMenu();
+    int startGame(int startLine);
+};
 
 #endif 
