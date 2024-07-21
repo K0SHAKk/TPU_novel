@@ -25,8 +25,7 @@ int Game::mainMenu(){
     std::cout << "Главное меню:" << std::endl;
     std::cout << "1. Новая игра" << std::endl;
     std::cout << "2. Загрузить игру" << std::endl;
-    std::cout << "3. Настройки" << std::endl;
-    std::cout << "4. Выход" << std::endl;
+    std::cout << "3. Выход" << std::endl;
     std::cin >> choise;
     clear();
     return choise;
@@ -37,8 +36,7 @@ int Game::gameMenu(){
     unsigned short int choise;
     std::cout << "1.Продолжить" << std::endl;
     std::cout << "2.Сохранить" << std::endl;
-    std::cout << "3.Настройки" << std::endl;
-    std::cout << "4.Главное меню" << std::endl;
+    std::cout << "3.Главное меню" << std::endl;
     std::cin >> choise;
     clear();
     return choise;
@@ -46,6 +44,7 @@ int Game::gameMenu(){
 
 int Game::startGame(int startLine){
     std::ifstream file;
+    unsigned short int finalChoise;
 
     file.open(pathScene);
 
@@ -104,9 +103,6 @@ int Game::startGame(int startLine){
                             std::cout << txt << std::endl;
                         }
                         else if (choise == 3){
-                            std::cout << "В разработке" << std::endl;
-                        }
-                        else if (choise == 4){
                             return 0;
                         }
                     }
@@ -114,6 +110,33 @@ int Game::startGame(int startLine){
             }
             curentLine++;
         }
+        std::cin >> finalChoise;
+        if (finalChoise == 1){
+            std::cout << "Концовка 1";
+        }
+        else if (finalChoise == 2){
+            std::cout << "Концовка 2";
+        }
+        while(IsDialogueKeyPress()){
+            if (!IsESCKeyPress()){
+                int choise = gameMenu();
+                if (choise == 1){
+                    std::cout << txt << std::endl;
+                    continue;
+                }
+                else if (choise == 2){
+                    clear();
+                    save2.saveGame(curentLine, txt);
+                    save2.saveData();
+                    save2.refreshData();
+                    clear();
+                    std::cout << txt << std::endl;
+                }
+                else if (choise == 3){
+                    return 0;
+                }
+            }
+        };
     }
     clear();
     // save2.~Save();

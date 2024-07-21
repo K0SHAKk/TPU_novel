@@ -27,9 +27,6 @@ int main(int, char**){
             game.startGame(startLine);
         }
         else if(choice == 3){
-            std::cout << "В разработке" << std::endl;
-        }
-        else if(choice == 4){
             std::cout << "До скорых встреч" << std::endl;
             running = false;
         }
