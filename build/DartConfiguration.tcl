@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/practica/TPU_novel"
+ConfigureCommand: "C:/msys64/mingw64/bin/cmake.exe" "C:/practica/TPU_novel"
 MakeCommand: "C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

@@ -1,11 +1,8 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(TPU_novel VERSION 0.1.0 LANGUAGES C CXX)
+cmake_minimum_required(VERSION 3.10)
+project(TPU_novel)
 
-add_executable(TPU_novel main.cpp scene.h scene.cpp game.h game.cpp save.h save.cpp tools.h tools.cpp)
+file(GLOB project_GLOB
+    src/*
+)
 
-include(CTest)
-enable_testing()
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_executable(TPU_novel ${project_GLOB})
