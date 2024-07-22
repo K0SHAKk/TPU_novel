@@ -1,0 +1,7 @@
+# ninja log v6
+15	606	7433779241040704	CMakeFiles/TPU_novel.dir/src/scene.cpp.obj	8a48e3269da27a23
+10	671	7433779240990692	CMakeFiles/TPU_novel.dir/src/save.cpp.obj	38c18eea34fd6c3d
+19	1893	7433779241080721	CMakeFiles/TPU_novel.dir/src/tools.cpp.obj	20c26fa3540a3251
+6	1905	7433779240950665	CMakeFiles/TPU_novel.dir/src/main.cpp.obj	8b2fc25816d605a5
+1	1935	7433779240910648	CMakeFiles/TPU_novel.dir/src/game.cpp.obj	c26314c73544f44d
+1936	2076	7433779260253001	TPU_novel.exe	fefcac26bba12b66
