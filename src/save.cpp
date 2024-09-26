@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include "save.h"
+#include "tools.h"
 
 Save::Save()
 {
@@ -82,6 +83,7 @@ void Save::saveGame(unsigned short int line, std::string str){
 }
 
 int Save::loadGame(){
+    clear();
     int slot;
     std::cout << "Выберите слот Загрузки:" << std::endl;
     for (int i = 0; i < 10; i++){

@@ -3,6 +3,7 @@
 #include <vector>
 #include "scene.h"
 
+// функция из полученой строки достаёт детали сцены которые разделены знаком ";"
 Scene::Scene(std::string str){
     std::vector<std::string> arr;
     std::string delim("; ");
@@ -10,6 +11,7 @@ Scene::Scene(std::string str){
     size_t next;
     size_t delta = delim.length();
 
+    // через цикл в массив записывается чтроки разделёные знаком ";" 
     while( ( next = str.find( delim, prev ) ) != std::string::npos ){
         //Отладка-start
         std::string tmp = str.substr( prev, next-prev );
@@ -21,6 +23,8 @@ Scene::Scene(std::string str){
     std::string tmp = str.substr( prev );
     //Отладка-end
     arr.push_back( str.substr( prev ) );
+
+    // строки из массива записывауться в переменые text, background, character, emote для дальнейшего использования в создании графической сцены
     text = arr[0];
     background = arr[1];
     character = arr[2];

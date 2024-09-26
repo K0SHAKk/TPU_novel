@@ -22,11 +22,13 @@ int main(int, char**){
             game.startGame(0);
         }
         else if(choice == 2){
+            clear();
             int startLine = save.loadGame();
             std::cout << startLine << std::endl;
             game.startGame(startLine);
         }
         else if(choice == 3){
+            clear();
             std::cout << "До скорых встреч" << std::endl;
             running = false;
         }

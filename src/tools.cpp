@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <stdlib.h>
 
+// функция отчистка консоли
 void clear() {
     COORD topLeft  = { 0, 0 };
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);

@@ -19,6 +19,8 @@ Game::~Game()
 {
 }
 
+
+// функция создающая главное меню
 int Game::mainMenu(){
     clear();
     unsigned short int choise;
@@ -31,6 +33,7 @@ int Game::mainMenu(){
     return choise;
 }
 
+// функция создающая меню паузы
 int Game::gameMenu(){
     clear();
     unsigned short int choise;
@@ -83,10 +86,7 @@ int Game::startGame(int startLine){
                 std::cout << std::endl;
                 tempTimeSleep = timeSleep;
 
-                // *Строка проверки*
-                // std::cout << scn.getText() << " " << scn.getBackground() << " " << scn.getCharacter() << " " << scn.getEmote()  << std::endl;
-
-                //пустой цикл не дающий продолжиться выполнению программы файла пока не будет нажата кнопка 
+                //цикл не дающий продолжиться выполнению программы файла пока не будет нажата клавиша Enter или Space. Если нажата клавиша Esc вызвает меню паузы
                 while(IsDialogueKeyPress()){
                     if (!IsESCKeyPress()){
                         int choise = gameMenu();
@@ -110,12 +110,14 @@ int Game::startGame(int startLine){
             }
             curentLine++;
         }
+        std::cout << "Пойти в общежитие со всеми?" << std::endl;
+        std::cout << "1 Да\n2 нет" << std::endl;
         std::cin >> finalChoise;
         if (finalChoise == 1){
-            std::cout << "Концовка 1";
+            std::cout << "Вы возвращаетесь в общежитие со всеми";
         }
         else if (finalChoise == 2){
-            std::cout << "Концовка 2";
+            std::cout << "Вы решаете прогуляться одни по городу";
         }
         while(IsDialogueKeyPress()){
             if (!IsESCKeyPress()){
@@ -139,6 +141,5 @@ int Game::startGame(int startLine){
         };
     }
     clear();
-    // save2.~Save();
     return 0;
 }
